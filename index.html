@@ -37,10 +37,75 @@ src="https://www.facebook.com/tr?id=1455601962688889&ev=PageView&noscript=1"
   <!-- TikTok Pixel Code End -->
   <!-- TikTok Events -->
   <script>
-    ttq.track('ViewContent', {});
+    // ViewContent — fires on page load
+    ttq.track('ViewContent', {
+      "contents": [
+        {
+          "content_id": "builderk-guia-001",
+          "content_type": "product",
+          "content_name": "BuilderK Guia - Licencia de Construccion sin Examen"
+        }
+      ],
+      "value": 297,
+      "currency": "USD"
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
+
+      // AddToWishlist — when user clicks "Ver Contenido" (interest signal)
+      var verContenido = document.querySelector('a.btn-secondary[href="#que-incluye"]');
+      if (verContenido) {
+        verContenido.addEventListener('click', function() {
+          ttq.track('AddToWishlist', {
+            "contents": [
+              {
+                "content_id": "builderk-guia-001",
+                "content_type": "product",
+                "content_name": "BuilderK Guia - Licencia de Construccion sin Examen"
+              }
+            ],
+            "value": 297,
+            "currency": "USD"
+          });
+        });
+      }
+
+      // InitiateCheckout — when user clicks any buy/CTA button (Shopify links)
+      var buyButtons = document.querySelectorAll('a[href*="builderk-2.myshopify.com"]');
+      buyButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          ttq.track('InitiateCheckout', {
+            "contents": [
+              {
+                "content_id": "builderk-guia-001",
+                "content_type": "product",
+                "content_name": "BuilderK Guia - Licencia de Construccion sin Examen"
+              }
+            ],
+            "value": 297,
+            "currency": "USD"
+          });
+        });
+      });
+
+      // CompleteRegistration — form submission
       var f = document.querySelector('form[action*="formspree"]');
-      if (f) f.addEventListener('submit', function() { ttq.track('CompleteRegistration', {}); });
+      if (f) {
+        f.addEventListener('submit', function() {
+          ttq.track('CompleteRegistration', {
+            "contents": [
+              {
+                "content_id": "builderk-guia-001",
+                "content_type": "product",
+                "content_name": "BuilderK Guia - Licencia de Construccion sin Examen"
+              }
+            ],
+            "value": 297,
+            "currency": "USD"
+          });
+        });
+      }
+
     });
   </script>
   <!-- End TikTok Events -->
